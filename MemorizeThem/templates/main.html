@@ -1,0 +1,96 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MemorizeThem</title>
+    <link rel="stylesheet" type="text/css" href="{%static 'css/foundation.css'%}">
+    <style>
+        /* Style The Dropdown Button */
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div class="top-bar" id="realEstateMenu" style="padding: 0; margin: 0">
+  <div class="top-bar-left" style="padding: 0; margin: 0">
+    <ul class="menu" style="padding: 0; margin: 0">
+        <a href="/" style="margin: 0; padding: 0"><li class="menu-text" type="button" style="background-color: #dfbb00; color: white; font-weight: bold;"><h4>MemorizeThem</h4></li></a>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><a href="/contacts/" type="button" style="background-color: #cc1111; color: white; margin-right: 5px;">My Friends</a></li>
+      <li>
+            {% if user.username %}
+                <a href="/auth/logout/" type="button" class="button" style="margin-right: 5px">Logout ({{ user.username }})</a>
+            {% else %}
+                <a href="/auth/login/" class="button" style="margin-right: 5px">Login</a>
+            {% endif %}
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- /Navigation -->
+
+<br>
+<article class="grid-container">
+
+    {% block title %}{% endblock %}
+
+    {% block contact %}{% endblock %}
+
+    {% block login %}{% endblock %}
+
+    {% block registration %}{% endblock %}
+
+
+</article>
+
+</body>
+</html>
